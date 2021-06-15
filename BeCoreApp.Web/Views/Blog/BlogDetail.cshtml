@@ -1,0 +1,175 @@
+﻿@model BeCoreApp.Models.BlogViewModels.DetailViewModel
+@{
+    ViewData["Title"] = Model.Blog.SeoPageTitle;
+    ViewData["MetaKeyword"] = Model.Blog.SeoKeywords;
+    ViewData["MetaDescription"] = Model.Blog.SeoDescription;
+}
+@section Scripts{
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=269628317070073&autoLogAppEvents=1"></script>
+}
+<div class="app-content">
+    <div class="container">
+        <!-- Page-header opened -->
+        <div class="page-header">
+            <!--  row opened -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/"><i class="ti-home mr-1"></i> Trang Chủ</a></li>
+                <li class="breadcrumb-item"><a href="#">@Model.BlogCategory.Name</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Blog.Name</li>
+            </ol>
+            <!--  row closed -->
+        </div>
+        <!-- Page-header closed -->
+        <div class="row">
+            <div class="col-xl-9 col-lg-12 col-md-12">
+                <!--Add lists-->
+                <div class="bg-white ml-1 mr-1 p-5 mb-5 br-2">
+                    <h2 class="mb-5 mt-5 font-weight-bold text-center">@Model.Blog.Name</h2>
+                    <div class="item-card9-desc mb-3">
+                        <a href="#" class="mr-2"><span class="text-black-50"><i class="fa fa-calendar-o text-muted mr-1"></i> @Model.Blog.DateModified.ToString("dd-MM-yyyy")</span></a>
+                        <a href="#" class="mr-2"><span class="text-black-50"> <i class="fa fa-bullseye"></i> @Model.BlogCategory.Name</span></a>
+                        <a href="#"><span class="text-black-50"> <i class="fa fa-user"></i> Admin</span></a>
+                    </div>
+                    <div>
+                        @Html.Raw(Model.Blog.MildContent)
+                    </div>
+                    @if (Model.BlogTags.Count > 0)
+                    {
+                        <div class="d-flex mt-5">
+                            <span class="mr-3 fs-15 pt-1 font-weight-semibold">Tags: </span>
+                            <div class="tags">
+                                @for (int i = 0; i < Model.BlogTags.Count; i++)
+                                {
+                                    string classValue = "";
+                                    if (i == 0) { classValue = "tag tag-blue"; }
+                                    else if (i == 1) { classValue = "tag tag-azure"; }
+                                    else if (i == 2) { classValue = "tag tag-indigo"; }
+                                    else if (i == 3) { classValue = "tag tag-purple"; }
+                                    else if (i == 4) { classValue = "tag tag-pink"; }
+                                    else if (i == 5) { classValue = "tag tag-red"; }
+                                    else if (i == 6) { classValue = "tag tag-orange"; }
+                                    else if (i == 7) { classValue = "tag tag-yellow"; }
+                                    else if (i == 8) { classValue = "tag tag-lime"; }
+                                    else if (i == 9) { classValue = "tag tag-green"; }
+                                    else if (i == 10) { classValue = "tag tag-teal"; }
+                                    else if (i == 11) { classValue = "tag tag-cyan"; }
+                                    else if (i == 12) { classValue = "tag tag-gray"; }
+                                    else { classValue = "tag tag-gray-dark"; }
+                                    var tagDetailUrl = $"/chu-de-bai-viet/{Model.Tags[i].Id}.html";
+                                    <a class="@classValue" href="@tagDetailUrl" title="@Model.Tags[i].Name">@Model.Tags[i].Name</a>
+                                }
+                            </div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Blog.Video))
+                    {
+                        <style>
+                            .youtube-content iframe {
+                                width: 100% !important;
+                            }
+                        </style>
+                        <div class="mt-5">
+                            <div class="mr-3 fs-15 pt-1 font-weight-semibold">Video: </div>
+                            <div class="text-center youtube-content">
+                                @Html.Raw(Model.Blog.Video)
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!--.Add lists-->
+            </div>
+
+            <!--Right Side Content-->
+            <div class="col-xl-3 col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header pl-3">
+                        <h3 class="card-title">Danh Mục</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="" id="container">
+                            <div class="filter-product-checkboxs">
+                                @foreach (var item in Model.SideBarBlogCategorys)
+                                {
+                                    <label class="custom-control custom-checkbox mb-3 pl-0">
+                                        <a href="@item.URL" class="">
+                                            <strong> @item.Name</strong>
+                                        </a>
+                                    </label>
+                                    @foreach (var itemChild in item.BlogCategoryChild)
+                                    {
+                                        <label class="custom-control custom-checkbox mb-2 pl-3">
+                                            <a href="@itemChild.URL" class="">@itemChild.Name<span class="label label-secondary float-right">@itemChild.CountBlog</span></a>
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-header pl-3 border-top">
+                        <h3 class="card-title">Tags</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="tags">
+                            @for (int i = 0; i < Model.Tags.Count; i++)
+                            {
+                                string classValue = "";
+                                if (i == 0) { classValue = "tag tag-blue"; }
+                                else if (i == 1) { classValue = "tag tag-azure"; }
+                                else if (i == 2) { classValue = "tag tag-indigo"; }
+                                else if (i == 3) { classValue = "tag tag-purple"; }
+                                else if (i == 4) { classValue = "tag tag-pink"; }
+                                else if (i == 5) { classValue = "tag tag-red"; }
+                                else if (i == 6) { classValue = "tag tag-orange"; }
+                                else if (i == 7) { classValue = "tag tag-yellow"; }
+                                else if (i == 8) { classValue = "tag tag-lime"; }
+                                else if (i == 9) { classValue = "tag tag-green"; }
+                                else if (i == 10) { classValue = "tag tag-teal"; }
+                                else if (i == 11) { classValue = "tag tag-cyan"; }
+                                else if (i == 12) { classValue = "tag tag-gray"; }
+                                else { classValue = "tag tag-gray-dark"; }
+                                var tagDetailUrl = $"/chu-de-bai-viet/{Model.Tags[i].Id}.html";
+                                <a class="@classValue" href="@tagDetailUrl" title="@Model.Tags[i].Name">@Model.Tags[i].Name</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">FanPage</h3>
+                    </div>
+                    <div class="card-body product-filter-desc">
+                        <div class="product-filter-icons text-center">
+                            <div class="fb-page" data-href="https://www.facebook.com/valuesshare.official"
+                                  data-width="" data-height="350"
+                                 data-small-header="false"
+                                 data-adapt-container-width="true"
+                                 data-hide-cover="false"
+                                 data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/valuesshare.official" class="fb-xfbml-parse-ignore">
+                                    <a href="https://www.facebook.com/valuesshare.official">Autobank</a>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Shares</h3>
+                    </div>
+                    <div class="card-body product-filter-desc">
+                        <div class="product-filter-icons text-center">
+                            <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
+                            <a href="#" class="dribbble-bg"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Right Side Content-->
+        </div>
+        <!-- row closed -->
+    </div>
+</div>

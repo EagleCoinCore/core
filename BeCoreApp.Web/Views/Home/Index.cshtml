@@ -1,0 +1,779 @@
+﻿@model HomeViewModel
+@section Styles{
+    <style>
+        /*div#demo {
+            font-size: 43px;
+            font-weight: 800;
+            font-family: 'Coda Caption', sans-serif !important;
+            box-shadow: 0px 0px 35px #dcdcdc;
+            border-radius: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background: linear-gradient( 45deg, #ff0057, #3ac3d359);
+            box-shadow: -10px 10px 13px #ad1457;
+        }
+
+            div#demo > .down-time {
+                color: #ffffff;
+                position: relative;
+                margin-right: 8px;
+            }
+
+        span.down-time-unit {
+            position: absolute;
+            top: -5px;
+            padding-left: 3px;
+            color: black;
+        }*/
+
+        .clock ul {
+            list-style: none;
+            margin: 0 -14px;
+            padding: 0;
+        }
+
+        .clock li {
+            width: 25%;
+            padding: 0 14px;
+            float: left;
+            position: relative;
+        }
+
+            .clock li > span {
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                display: block;
+                padding: 12px 2px;
+                font-size: 36px;
+                font-weight: 700;
+                color: #ffffff;
+                font-family: 'Poppins', sans-serif;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+                line-height: 36px;
+            }
+
+            .clock li span em {
+                display: block;
+                font-family: 'PT Sans', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 20px;
+            }
+    </style>
+}
+<!-- Content Section Start -->
+<div class="midd-container">
+
+    <!-- Hero Section Start -->
+    <div class="hero-main platinum-layout white-sec" style="background-image:url(/client-side/eaglecoin/images/banner-5.jpg);">
+        <div class="container">
+            <div class="row row-reverse align-items-center">
+                <div class="col-sm-12 col-md-6" data-wow-delay="0.5s">
+                    <div class="platinum-animation">
+                        <div class="platinum-move-1"></div>
+                        <div class="platinum-move-2"></div>
+                        <div class="platinum-move-3"></div>
+                        <div class="platinum-move-4"></div>
+                        <div class="platinum-move-5"></div>
+                        <div class="top-part">
+                            <div class="coin-icon"></div>
+                        </div>
+                        <div class="millde-part">
+
+                        </div>
+                        <div class="base">
+                            <div class="lines">
+                                <span class="l-1"></span>
+                                <span class="l-2"></span>
+                                <span class="l-3"></span>
+                                <span class="l-4"></span>
+                                <span class="l-5"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 mobile-center">
+                    <h1>EagleCoin <span class="text-warning">ELC</span></h1>
+                    <p class="lead">
+                        - The eaglecoin.info value proposition is bolstered by ELC.
+                        As the native cryptocurrency of the platform,
+                        ELC can be used for payments, receiving and redeeming loyalty rewards, discounts,
+                        collateral for DeFi and several other use cases which you can find eaglecoin.info.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn btnRegister">SIGN UP TO JOIN</a>
+                        <a href="#about" class="btn btn3">What is mission?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section End -->
+    <!--About Start -->
+    <div class="about-section p-tb diamond-layout white-bg" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12">
+                    <div class="diamond-icon">
+                        <img src="~/images/coinpool-c.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12">
+                    <h2 class="section-heading">About ELC</h2>
+                    <h4>Why to choose EagleCoin?</h4>
+                    <h5>A digital token backed by fiat currency provides individuals and organizations with a robust and decentralized method of exchanging value while using a familiar accounting unit.</h5>
+
+                    <div class="tab-section">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs text-uppercase" role="tablist">
+                            <li class="nav-item">
+                                <span class="nav-link active" id="mission-tab" data-toggle="tab" href="#mission" role="tab" aria-controls="mission" aria-selected="true">Our Mission</span>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link" id="vision-tab" data-toggle="tab" href="#vision" role="tab" aria-controls="vision" aria-selected="false">Our vision</span>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                <p>Founded by a group of seasoned network and blockchain professionals, EagleCoin's mission is to enhance payment on social network experience using blockchain technology.</p>
+                                <p>With the implementation of more advanced blockchain functionality and cryptocurrency use cases on the way, EagleCoin's future is a bright and exciting one.</p>
+                            </div>
+                            <div class="tab-pane" id="vision" role="tabpanel" aria-labelledby="vision-tab">
+                                <p>EagleCoin vision is to align payment on network with the ethos of decentralised technology. That being, promote accessibility to anyone, anywhere, offer censorship resistant and peer-to-peer transactions, and build open-source technology controlled by software and governed by users.</p>
+                                <p>With the implementation of more advanced blockchain functionality and cryptocurrency use cases on the way, EagleCoin's future is a bright and exciting one.</p>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="button-wrapper">
+                            <a class="btn" href="#">Read More</a>
+                            <a class="watch-link" href="#">
+                                <i class="fas fa-play"></i>
+                                <span><strong>Watch video</strong>What and How it work</span>
+                            </a>
+                        </div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--About end -->
+    <!-- Hero Section Start -->
+    <div class="hero-main mercury-layout white-sec" style="background:url(/client-side/eaglecoin/images/banner-6.jpg);">
+        <div class="container">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-sm-12 col-md-6" data-wow-delay="0.5s">
+                    <div class="mercury-animation">
+                        <div class="numbers">
+                            <div class="number-one"></div>
+                            <div class="number-two"></div>
+                        </div>
+                        <div id="earth-box-cover">
+                            <div class="earth-icons">
+                                <i class="icon-1"></i>
+                                <i class="icon-2"></i>
+                                <i class="icon-3"></i>
+                                <i class="icon-4"></i>
+                                <i class="icon-5"></i>
+                                <i class="icon-6"></i>
+                                <i class="icon-7"></i>
+                            </div>
+                            <div id="earth-box">
+                                <span></span>
+                            </div>
+                        </div>
+                        <!-- <div class="earth">
+                            <img src="images/mercury-earth.png" alt="">
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <h1>The Global Crypto Currency to Buy & Sell Coins</h1>
+                    <p class="lead">We break up the beneficiaries into three user groups: Exchanges, Individuals, and Merchants.</p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn btnLogin">Buy Now</a>
+                        <a href="#token" class="btn btn3">Tokens Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section End -->
+    <!-- Benefits Start -->
+    <div class="benefit-section platinum-layout white-bg p-t">
+        <div class="container">
+            <div class="text-center"><h2 class="section-heading">Benefits of Using Our Solution</h2></div>
+            <div class="banafits-list-items">
+                <div class="banafits-item">
+                    <div class="benefit-box text-center">
+                        <div class="benefit-icon">
+                            <img src="~/images/Benefits/benefit-icon-1.png" alt="Safe and Secure">
+                        </div>
+                        <div class="text">
+                            <h4>Safe and Secure</h4>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="banafits-item">
+                    <div class="benefit-box text-center">
+                        <div class="benefit-icon">
+                            <img src="~/images/Benefits/benefit-icon-2.png" alt="Instant Exchange">
+                        </div>
+                        <div class="text">
+                            <h4>Instant Exchange</h4>
+                            @*<p>Aenean cursus tincidunt ultrices. Ut quis blandit dolor.</p>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="banafits-item">
+                    <div class="benefit-box text-center">
+                        <div class="benefit-icon">
+                            <img src="~/images/Benefits/benefit-icon-5.png" alt="Strong Network">
+                        </div>
+                        <div class="text">
+                            <h4>Strong Network</h4>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="banafits-item">
+                    <div class="benefit-box text-center">
+                        <div class="benefit-icon">
+                            <img src="~/images/Benefits/benefit-icon-4.png" alt="Mobile Apps">
+                        </div>
+                        <div class="text">
+                            <h4>Mobile Apps</h4>
+                            @*<p>Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.</p>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="banafits-item">
+                    <div class="benefit-box text-center">
+                        <div class="benefit-icon">
+                            <img src="~/images/Benefits/benefit-icon-6.png" alt="Margin Trading">
+                        </div>
+                        <div class="text">
+                            <h4>Margin Trading</h4>
+                            @*<p>Consectetur adipiscing elit. Aenean cursus tincidunt ultrices.</p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banafits-circle">
+                <div class="icon">
+                    <img src="~/images/eaglecoinlogo1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Benefits End -->
+    <!-- Hero Section Start -->
+    <div class="hero-main layout-3 white-sec" style="background-image:url('/client-side/eaglecoin/images/banner.jpg');">
+        <div id="gold-tech-bg"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 hero-caption wow fadeIn text-center">
+                    <div class="sec-title text-center">
+                        <h1>Eagle Coin <span>Pre-sale</span> Stage 1</h1>
+                    </div>
+                </div>
+                <div class="col-sm-10 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="pre-sale-timer-outer">
+                        <div class="pre-sale-timer style-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h3>Pre-Sale <span>will start in</span></h3>
+                                    <div class="clock">
+                                        <ul>
+                                            <li><span><span id="boxDay">00</span><em>days</em></span></li>
+                                            <li><span><span id="boxHours">00</span><em>hours </em></span></li>
+                                            <li><span><span id="boxMin">00</span><em>minutes</em></span></li>
+                                            <li><span><span id="boxSeconds">00</span><em>seconds</em></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="hero-right-btn"><a class="btn btn4 btnRegister" href="#">Register & Buy Tokens Now</a></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="rang-slider-main">
+                                        <div class="rang-slider-toltip">
+                                            <span>Quantity Sold <strong>0 ELC</strong></span>
+                                            <span>Total Quantity <strong>900,000 ELC</strong></span>
+                                        </div>
+                                        <div class="rang-slider">
+                                            <div class="rang-line">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                        <div class="rang-slider-total">
+                                            <span>
+                                                <strong>Price: $0.09/ELC</strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section End -->
+    <!-- Token Sale start -->
+    <div class="token-sale p-tb" id="token">
+        <div class="container">
+            <div class="sec-title text-center"><h3>Token Sale</h3></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="token-sale-box">
+                        <ul>
+                            <li>
+                                <span>Token Name:</span>
+                                <label class="tokeninfo">EagleCoin</label>
+                            </li>
+                            <li>
+                                <span>Token Symbol:</span>
+                                <label class="tokeninfo">ELC</label>
+                            </li>
+                            <li>
+                                <span>Total Supply:</span>
+                                <label class="tokeninfo">29,000,000 ELC</label>
+                            </li>
+                            <li>
+                                <span>Precision:</span>
+                                <label class="tokeninfo">6</label>
+                            </li>
+                            <li>
+                                <span>Token Platform:</span>
+                                <label class="tokeninfo">TRON</label>
+                            </li>
+                            <li>
+                                <span>Token Standard:</span>
+                                <label class="tokeninfo">TRC20</label>
+                            </li>
+                            <li>
+                                <span>Token Address:</span>
+                                <label><a href="https://tronscan.io/#/token20/TM83zh7FFqpf9E9Xr2HxTmYsV7UUFXajLG" class="text-white">TM83zh7FFqpf9E9Xr2HxTmYsV7UUFXajLG</a></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="token-pre-sale">
+                        <div class="token-progress stag-1">
+                            <div class="stage-detail">
+                                <span class="token-name">Pre-Sales Stage 1</span>
+                                @*<span class="sale-date">08 Jun 2021 - 31 Jul 2021</span>*@
+                                <span class="token-discount">Price $0.09</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="day-left">Total: 900,000ELC</div>
+                        </div>
+                        <div class="token-progress stag-2">
+                            <div class="stage-detail">
+                                <span class="token-name">Pre-Sales Stage 2</span>
+                                @*<span class="sale-date">01 Aug 2021 - 30 Sep 2021</span>*@
+                                <span class="token-discount">Price $0.11</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="day-left">Total: 1,900,000ELC</div>
+                        </div>
+                        <div class="token-progress stag-3">
+                            <div class="stage-detail">
+                                <span class="token-name">Pre-Sales Stage 3</span>
+                                @*<span class="sale-date">01 Oct 2021 - 31 Dec 2021</span>*@
+                                <span class="token-discount">Price $0.14</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="day-left">Total: 2,200,000ELC</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Token Sale end -->
+    @await Html.PartialAsync("_HeroMain3")
+    <!-- The Roadmap  start-->
+    <div class="roadmap-sec p-tb diamond-layout" id="roadmap">
+        <div class="container">
+            <div class="text-center"><h2 class="section-heading">Road Map</h2></div>
+            <div class="horizontal-roadmap owl-carousel">
+                <div class="roadmap-item odd">
+                    <div class="roadmap-icon">
+                        <img src="~/client-side/eaglecoin/images/timeline-icon-1.png" alt="">
+                    </div>
+                    <div class="roadmap-text">
+                        <div class="roadmap-day">
+                            February 2021
+                        </div>
+                        <div class="roadmap-item-text">
+                            <h4>Make Ideas</h4>
+                            <p>Do market research, look for human resources, determine the right direction, understand your long-term mission and goals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roadmap-item even">
+                    <div class="roadmap-icon">
+                        <img src="~/client-side/eaglecoin/images/timeline-icon-2.png" alt="">
+                    </div>
+                    <div class="roadmap-text">
+                        <div class="roadmap-day">
+                            <span>June 2021</span>
+                        </div>
+                        <div class="roadmap-item-text">
+                            <h4>Implementing</h4>
+                            <p>Complete system, associate partners in many fields, connecting the community</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roadmap-item odd">
+                    <div class="roadmap-icon">
+                        <img src="~/client-side/eaglecoin/images/timeline-icon-3.png" alt="">
+                    </div>
+                    <div class="roadmap-text">
+                        <div class="roadmap-day">
+                            <span>December 2022</span>
+                        </div>
+                        <div class="roadmap-item-text">
+                            <h4>Exchange Cryptocash</h4>
+                            <p>On the exchange to stabilize the token, connect the community for stronger development models</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roadmap-item even">
+                    <div class="roadmap-icon">
+                        <img src="~/client-side/eaglecoin/images/timeline-icon-4.png" alt="">
+                    </div>
+                    <div class="roadmap-text">
+                        <div class="roadmap-day">
+                            <span>January 2023</span>
+                        </div>
+                        <div class="roadmap-item-text">
+                            <h4>Launching App</h4>
+                            <p>Launching App, saving tokens of partners who have been funded with EagleCoin.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roadmap-item odd">
+                    <div class="roadmap-icon">
+                        <img src="~/client-side/eaglecoin/images/timeline-icon-5.png" alt="">
+                    </div>
+                    <div class="roadmap-text">
+                        <div class="roadmap-day">
+                            <span>January 2025</span>
+                        </div>
+                        <div class="roadmap-item-text">
+                            <h4>P2P</h4>
+                            <p>Launched P2P peer-to-peer lending system.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roadmap-item even">
+                    <div class="roadmap-icon">
+                        <img src="~/client-side/eaglecoin/images/timeline-icon-6.png" alt="">
+                    </div>
+                    <div class="roadmap-text">
+                        <div class="roadmap-day">
+                            <span>December 2027</span>
+                        </div>
+                        <div class="roadmap-item-text">
+                            <h4>Complete Exchange</h4>
+                            <p>Support to develop transactions that convert real assets</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The Roadmap end-->
+    <!-- Team sec start-->
+    @*<div class="team-section p-tb white-bg" id="team">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <h2 class="section-heading">Our Experts</h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="teamslider owl-carousel">
+                            <div class="team-box">
+                                <div class="team-img">
+                                    <img src="~/client-side/eaglecoin/images/team-9.jpg" alt="">
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h4>Andy Sant</h4>
+                                    <span>Founder & CEO</span>
+                                </div>
+                            </div>
+                            <div class="team-box">
+                                <div class="team-img">
+                                    <img src="~/client-side/eaglecoin/images/team-10.jpg" alt="">
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h4>Dan Kaul</h4>
+                                    <span>Co-founder & CTO</span>
+                                </div>
+                            </div>
+                            <div class="team-box">
+                                <div class="team-img">
+                                    <img src="~/client-side/eaglecoin/images/team-12.jpg" alt="">
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h4>Saru Matt</h4>
+                                    <span>Marketing Officer</span>
+                                </div>
+                            </div>
+                            <div class="team-box">
+                                <div class="team-img">
+                                    <img src="~/client-side/eaglecoin/images/team-11.jpg" alt="">
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h4>Cyrus Nato</h4>
+                                    <span>Lead Product Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <!-- Team sec end-->
+    <!-- FAQ Section start-->
+    @*<div class="faq-section p-tb light-gray-bg" id="faq">
+            <div class="container">
+                <div class="text-center"><h3 class="section-heading">Frequently Asked Questions</h3></div>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="tab-section">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <span class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">General</span>
+                                </li>
+                                <li class="nav-item">
+                                    <span class="nav-link" id="tokens-tab" data-toggle="tab" href="#tokens" role="tab" aria-controls="tokens" aria-selected="false">Tokens</span>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                                    <!--Accordion wrapper-->
+                                    <div class="accordion md-accordion style-3" id="accordionGeneral" role="tablist" aria-multiselectable="true">
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne1">
+                                                <a data-toggle="collapse" data-parent="#accordionGeneral" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">
+                                                        When would I be able to see my token balance? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionGeneral">
+                                                <div class="card-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingTwo2">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionGeneral" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                                                    <h5 class="mb-0">
+                                                        Is it possible for the citizens or residents of the US to participate in the Token Sale? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionGeneral">
+                                                <div class="card-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingThree3">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionGeneral" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                                                    <h5 class="mb-0">
+                                                        Is there a KYC process involved? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionGeneral">
+                                                <div class="card-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingFour4">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionGeneral" href="#collapseFour4" aria-expanded="false" aria-controls="collapseFour4">
+                                                    <h5 class="mb-0">
+                                                        What will happen to the unsold tokens? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseFour4" class="collapse" role="tabpanel" aria-labelledby="headingFour4" data-parent="#accordionGeneral">
+                                                <div class="card-body">
+                                                    Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingFive5">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionGeneral" href="#collapseFive5" aria-expanded="false" aria-controls="collapseFive5">
+                                                    <h5 class="mb-0">
+                                                        Which cryptocurrencies can I use to participate in the Token Sale? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseFive5" class="collapse" role="tabpanel" aria-labelledby="headingFive5" data-parent="#accordionGeneral">
+                                                <div class="card-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                    </div>
+                                    <!-- Accordion wrapper -->
+                                </div>
+                                <div class="tab-pane" id="tokens" role="tabpanel" aria-labelledby="tokens-tab">
+                                    <!--Accordion wrapper-->
+                                    <div class="accordion md-accordion style-3" id="accordionTokens" role="tablist" aria-multiselectable="true">
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="FAQTokensheading1">
+                                                <a data-toggle="collapse" data-parent="#accordionTokens" href="#FAQTocken1" aria-expanded="true" aria-controls="FAQTocken1">
+                                                    <h5 class="mb-0">
+                                                        What will happen to the unsold tokens? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="FAQTocken1" class="collapse show" role="tabpanel" aria-labelledby="FAQTokensheading1" data-parent="#accordionTokens">
+                                                <div class="card-body">
+                                                    Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="FAQTokensheading2">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionTokens" href="#FAQTocken2" aria-expanded="false" aria-controls="FAQTocken2">
+                                                    <h5 class="mb-0">
+                                                        Which cryptocurrencies can I use to participate in the Token Sale? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="FAQTocken2" class="collapse" role="tabpanel" aria-labelledby="FAQTokensheading2" data-parent="#accordionTokens">
+                                                <div class="card-body">
+                                                    Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor.Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                        <!-- Accordion card -->
+                                        <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="FAQTokensheading3">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionTokens" href="#FAQTocken3" aria-expanded="false" aria-controls="FAQTocken3">
+                                                    <h5 class="mb-0">
+                                                        Is it possible for the citizens or residents of the US to participate in the Token Sale? <i class="fas fa-caret-down rotate-icon"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="FAQTocken3" class="collapse" role="tabpanel" aria-labelledby="FAQTokensheading3" data-parent="#accordionTokens">
+                                                <div class="card-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Accordion card -->
+                                    </div>
+                                    <!-- Accordion wrapper -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+        </div>*@
+    <!-- FAQ Section end-->
+    <!-- Brand logo slider -->
+    <div class="brand-logo-slider c-l p-tb white-sec">
+        <div class="container">
+            <div class="brand-logos owl-carousel">
+                <div class="item"><img src="~/images/logo-partner/BigONE.png" alt="BigONE" /><h5 class="pt-2">BigONE</h5></div>
+                <div class="item"><img src="~/images/logo-partner/Bitfinex.png" alt="Bitfinex" /><h5 class="pt-2">Bitfinex</h5></div>
+                <div class="item"><img src="~/images/logo-partner/bitFlyer.png" alt="bitFlyer" /><h5 class="pt-2">bitFlyer</h5></div>
+                <div class="item"><img src="~/images/logo-partner/Currency.png" alt="Currency" /><h5 class="pt-2">Currency</h5></div>
+                <div class="item"><img src="~/images/logo-partner/Gate.png" alt="Gate" /><h5 class="pt-2">Gate</h5></div>
+                <div class="item"><img src="~/images/logo-partner/HuobiGlobal.png" alt="HuobiGlobal" /><h5 class="pt-2">Huobi Global</h5></div>
+                <div class="item"><img src="~/images/logo-partner/Korbit.png" alt="Korbit" /><h5 class="pt-2">Korbit</h5></div>
+                <div class="item"><img src="~/images/logo-partner/Kraken.png" alt="Kraken" /><h5 class="pt-2">Kraken</h5></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brand logo end -->
+</div>
+<!-- Content Section End -->
+<div class="clear"></div>

@@ -1,0 +1,795 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-BeCoreApp.Web-A8CA69FF-42F0-4734-8E5E-1AE5F2224FF3</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <Compile Remove="wwwroot\client-side\eaglecoin\img\**" />
+    <Compile Remove="wwwroot\icons\**" />
+    <Content Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <Content Remove="wwwroot\client-side\eaglecoin\img\**" />
+    <Content Remove="wwwroot\icons\**" />
+    <EmbeddedResource Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <EmbeddedResource Remove="wwwroot\client-side\eaglecoin\img\**" />
+    <EmbeddedResource Remove="wwwroot\icons\**" />
+    <None Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <None Remove="wwwroot\client-side\eaglecoin\img\**" />
+    <None Remove="wwwroot\icons\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" PrivateAssets="All" />
+    <PackageReference Include="Nethereum.HdWallet" Version="3.4.0" />
+    <PackageReference Include="Nethereum.Web3" Version="3.4.0" />
+    <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.5.0" />
+    <PackageReference Include="WebMarkupMin.NUglify" Version="2.5.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BeCoreApp.Application\BeCoreApp.Application.csproj" />
+    <ProjectReference Include="..\BeCoreApp.Data.EF\BeCoreApp.Data.EF.csproj" />
+    <ProjectReference Include="..\BeCoreApp.Data\BeCoreApp.Data.csproj" />
+    <ProjectReference Include="..\BeCoreApp.Infrastructure\BeCoreApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\BeCoreApp.Utilities\BeCoreApp.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+    <Folder Include="wwwroot\client-side\eaglecoin\css\" />
+    <Folder Include="wwwroot\client-side\eaglecoin\js\" />
+    <Folder Include="wwwroot\images\Benefits\" />
+    <Folder Include="wwwroot\images\partner\" />
+    <Folder Include="wwwroot\uploaded\excels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Feedback\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Feedback\_AddEditModal.cshtml" />
+    <None Include="Areas\Admin\Views\Slide\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Slide\_AddEditModal.cshtml" />
+    <None Include="wwwroot\admin-app\controllers\feedback\index.js" />
+    <None Include="wwwroot\admin-app\controllers\slide\index.js" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\arrow-left.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\arrow-right.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\AquariusCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Augur.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Bitcoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\BitConnect.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\BitShares.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Bytecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Dash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Decred.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\EOS.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Ethereum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Euro.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Golem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Iconomi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\IOTA.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\LanaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\litecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\monero.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\NEM.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Neo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Netko-coin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\NevaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\qtum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\raiblocks.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Ripple.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Siacoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Steem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\stellar.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Stratis.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Suncontract.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\TajCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\tron.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Waves.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Xaurum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\regular\Zcash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\AquariusCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Augur.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Bitcoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\BitConnect.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\BitShares.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Bytecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Dash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Decred.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\EOS.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Ethereum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Golem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Iconomi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\IOTA.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\LanaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Litecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Monero.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\NEM.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Netko-coin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\NevaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Ripple.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Siacoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Steem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Stratis.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Suncontract.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\TajCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Waves.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Xaurum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-icons\Zcash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\AquariusCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Augur.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Bitcoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\BitConnect.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\BitShares.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Bytecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Dash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Decred.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\EOS.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Ethereum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Golem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Iconomi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\IOTA.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\LanaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Litecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Monero.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\NEM.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Netko-coin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\NevaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Ripple.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Siacoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Steem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Stratis.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Suncontract.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\TajCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Waves.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Xaurum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\round-outline\Zcash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\AquariusCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Augur.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Bitcoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\BitConnect.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\BitShares.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Bytecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Dash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Decred.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\EOS.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Ethereum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Golem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Iconomi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\IOTA.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\LanaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Litecoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Monero.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\NEM.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Netko-coin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\NevaCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Ripple.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Siacoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Steem.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Stratis.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Suncontract.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\TajCoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Waves.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Xaurum.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\crypto-currencies\square-color\Zcash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ad.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ae.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\af.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ag.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ai.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\al.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\am.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ao.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\aq.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ar.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\as.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\at.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\au.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\aw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ax.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\az.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ba.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bb.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bd.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\be.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bh.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bj.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bq.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\br.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bs.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bv.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\by.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\bz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ca.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cd.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ch.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ci.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ck.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\co.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cv.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cx.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\cz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\de.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\dj.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\dk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\dm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\do.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\dz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ec.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ee.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\eg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\eh.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\er.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\es.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\et.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\eu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\fi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\fj.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\fk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\fm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\fo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\fr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ga.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gb-eng.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gb-nir.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gb-sct.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gb-wls.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gb.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gd.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ge.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gh.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gp.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gq.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gs.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\gy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\hk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\hm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\hn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\hr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ht.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\hu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\id.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ie.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\il.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\im.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\in.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\io.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\iq.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ir.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\is.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\it.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\je.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\jm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\jo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\jp.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ke.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kh.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ki.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\km.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kp.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ky.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\kz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\la.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lb.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\li.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ls.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\lv.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ly.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ma.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\md.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\me.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mh.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ml.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mp.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mq.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ms.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mv.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mx.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\my.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\mz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\na.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\nc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ne.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\nf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ng.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ni.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\nl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\no.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\np.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\nr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\nu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\nz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\om.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pa.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pe.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ph.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ps.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\pw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\py.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\qa.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\re.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ro.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\rs.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ru.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\rw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sa.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sb.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sd.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\se.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sh.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\si.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sj.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\so.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ss.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\st.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sv.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sx.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\sz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\td.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\th.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tj.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tk.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tl.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\to.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tr.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tv.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\tz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ua.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ug.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\um.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\un.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\us.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\uy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\uz.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\va.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\vc.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ve.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\vg.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\vi.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\vn.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\vu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\wf.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ws.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\ye.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\yt.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\za.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\zm.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\flags\zw.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\other\loader-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\other\loader.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\other\loader1.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\other\loader2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\other\loader3.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\other\loader4.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\2checkout-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\2checkout.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\alipay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\alipay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\amazon-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\amazon.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\americanexpress-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\americanexpress.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\applepay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\applepay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\bancontact-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\bancontact.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\bitcoin-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\bitcoin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\bitpay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\bitpay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\cirrus-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\cirrus.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\clickandbuy-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\clickandbuy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\coinkite-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\coinkite.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\dinersclub-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\dinersclub.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\directdebit-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\directdebit.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\discover-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\discover.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\dwolla-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\dwolla.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ebay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ebay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\eway-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\eway.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\giropay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\giropay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\googlewallet-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\googlewallet.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ingenico-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ingenico.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\jcb-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\jcb.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\klarna-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\klarna.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\laser-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\laser.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\maestro-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\maestro.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\mastercard-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\mastercard.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\monero-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\monero.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\neteller-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\neteller.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ogone-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ogone.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\okpay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\okpay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paybox-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paybox.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paymill-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paymill.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payone-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payone.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payoneer-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payoneer.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paypal-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paypal.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paysafecard-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\paysafecard.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payu-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payza-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\payza.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ripple-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ripple.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\sage-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\sage.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\sepa-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\sepa.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\shopify-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\shopify.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\skrill-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\skrill.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\solo-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\solo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\square-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\square.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\stripe-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\stripe.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\switch-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\switch.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ukash-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\ukash.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\unionpay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\unionpay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\verifone-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\verifone.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\verisign-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\verisign.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\visa-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\visa.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\webmoney-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\webmoney.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\westernunion-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\westernunion.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\worldpay-dark.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\payments\worldpay.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\app.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\bars-graphic.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\bitcoin-logo.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\calendar.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\cube.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\happy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\homepage.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\icons.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\layers.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\login.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\menu.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\search.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\shopping-cart.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\shopping.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\testing.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svgs\writing.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\add-contact.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\analyze_data.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\at-sign.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\businessman.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\calander.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\calander2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\cart.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\check.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\circle.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\close.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\complete_task.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\construction.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\construction2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\construction3.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\construction4.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\designer.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\email.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\error.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\error2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\icon1.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\icon2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\icon3.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\icon4.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\medal.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\new_message.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\new_message1.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\people.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\pri1.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\pri2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\pri3.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\profile.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\project.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\rainy.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\sub.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\subscribe.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\team.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\team2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\tether.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\upload.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\user.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\vstoken1.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\vstoken2.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\wallet.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\walletgame.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\walletusdtdeposit.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\walletwin.svg" />
+    <None Include="wwwroot\admin-side\dashlot-admin\HTML\assets\images\svg\welletethereumdeposit.svg" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ar.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\bg.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\cs.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\de.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\el.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\en.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\es.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\et.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\eu.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\fi.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\fr.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\he.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\hu.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\it.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ja.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ko.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\nb.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\nl.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\nn.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\pl.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\pt-br.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\pt.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ru.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\sk.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\tr.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\uk.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\vi.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\zh.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\plugin.js" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\.gitignore" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\jquery.qrcode.min.js" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\Makefile" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\README.md" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\src\jquery.qrcode.js" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\src\qrcode.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Account\AccessDenied.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ExternalLogin.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ForgotPassword.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Lockout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Login.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\LoginWith2fa.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\LoginWithRecoveryCode.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Register.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ResetPassword.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\SignedOut.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Notify\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Notify\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_LayoutMain.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SupportManage\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SupportManage\_EditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Support\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Support\_ViewModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Support\_AddModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Network\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_PageHeaderPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_LayoutAccount.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\TransactionHistoryManager\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\TransactionHistoryManager\_ViewModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\TransactionHistory\_ViewModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\TransactionHistory\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\_AddEditModalCustomer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Wallet\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\BlogCategory\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\BlogCategory\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuItem\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuItem\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Blog\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Blog\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Function\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuGroup\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuGroup\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\Components\PagingUser\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\Components\Paging\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Blog\_AdvancedFBS.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EmailTemplate\_ForgotPassword.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EmailTemplate\_VerifyAccount.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\client-app\controllers\feedback\index.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

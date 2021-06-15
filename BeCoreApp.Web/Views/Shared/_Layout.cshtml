@@ -1,0 +1,109 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Responsive Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- favicon & bookmark -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/client-side/eaglecoin/images/bookmark.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/images/eaglecoinlogo2.png" type="image/x-icon" />
+    <!-- Font Family -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+    <!-- Website Title -->
+    <title>EagleCoin</title>
+    <!-- Stylesheets Start -->
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/fontawesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/jquery.fancybox.min.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/slick.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="~/client-side/eaglecoin/css/responsive.css" type="text/css" />
+    <!-- Stylesheets End -->
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!--Main Wrapper Start-->
+    <div class="wrapper" id="top">
+        @await Html.PartialAsync("_Header")
+        @RenderBody()
+        @await Html.PartialAsync("_Footer")
+    </div>
+    <!--Main Wrapper End-->
+    <script src="~/client-side/eaglecoin/js/jquery.min.js"></script>
+    <script src="~/client-side/eaglecoin/js/circle-progress.js"></script>
+    <script src="~/client-side/eaglecoin/js/bootstrap.min.js"></script>
+    <script src="~/client-side/eaglecoin/js/onpagescroll.js"></script>
+    <script src="~/client-side/eaglecoin/js/wow.min.js"></script>
+    <script src="~/client-side/eaglecoin/js/jquery.countdown.js"></script>
+    <script src="~/client-side/eaglecoin/js/owl.carousel.js"></script>
+    <script src="~/client-side/eaglecoin/js/slick.min.js"></script>
+    <script src="~/client-side/eaglecoin/js/Chart.js"></script>
+    <script src="~/client-side/eaglecoin/js/chart-function.js"></script>
+    <script src="~/client-side/eaglecoin/js/jquery.fancybox.min.js"></script>
+    <script src="~/client-side/eaglecoin/js/script.js"></script>
+    <script src="~/client-side/eaglecoin/js/particles.js"></script>
+    <script src="~/client-side/eaglecoin/js/gold-app.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            setTimeout(function () {
+                jQuery('.platinum-animation').addClass('start-animation');
+            }, 1000);
+            setTimeout(function () {
+                jQuery('.platinum-animation .lines').addClass('active');
+            }, 2000);
+
+            $(".btnLogin").click(function () {
+                window.location.href = '/admin/account/login'
+            });
+
+            $(".btnRegister").click(function () {
+                window.location.href = '/admin/account/register'
+            });
+
+            loadBuyCountDownDate(new Date("Jun 12, 2021 20:00:00").getTime());
+        });
+
+        function loadBuyCountDownDate(countDownDate) {
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get today's date and time
+                var nowDate = new Date();
+
+                var now = nowDate.getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                }
+                else {
+                    document.getElementById("boxDay").innerHTML = days;
+                    document.getElementById("boxHours").innerHTML = hours;
+                    document.getElementById("boxMin").innerHTML = minutes;
+                    document.getElementById("boxSeconds").innerHTML = seconds;
+                }
+            }, 1000);
+
+        }
+    </script>
+</body>
+</html>
+<!--https://sacredthemes.net/coinpool/intro/-->

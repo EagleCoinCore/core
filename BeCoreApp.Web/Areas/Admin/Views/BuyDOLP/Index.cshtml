@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Buy ELC";
+}
+@section Styles{
+    <link href="~/admin-app/controllers/buy-dolp/index.css" rel="stylesheet" asp-append-version="true" />
+}
+@section Scripts{
+    <script src="~/admin-app/controllers/buy-dolp/index.js"></script>
+    <script>
+        var buydolpObj = new BuyDOLPController();
+        buydolpObj.initialize();
+    </script>
+}
+<div class="app-content icon-content">
+    <div class="section">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="ti-package mr-1"></i> Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+            </ol>
+            <div class="mt-3 mt-lg-0"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-12 col-lg-4 col-xl-4 offset-xl-1 offset-lg-1">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <div class="card-title" style="color: #4e4d4b;
+                                                        font-weight: 600 !important;
+                                                        text-shadow: -3px 3px 8px #565653;
+                                                        width:100%">ELC Price:<span style="color: #ff5722;"> $0.09</span></div>
+                    </div>
+                    <div class="card-body" style="padding: 1.5rem 1.5rem;">
+                        <form>
+                            @Html.AntiForgeryToken()
+                            <div class="box-platform">
+                                <div class="form-group">
+                                    <label class="form-control-label">Wallet TRX Balance</label>
+                                    <input type="text" readonly class="form-control numberFormat" id="trxBalance" value="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label"> TRX Amount</label>
+                                    <input type="text" class="form-control numberFormat txtTRXAmount" value="0" id="txtAmount">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">ELC Receiving Amount</label>
+                                    <input type="text" readonly class="form-control numberFormat" value="0" id="txtDOLPReceiving">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Address Receiving</label>
+                                    <input type="text" class="form-control" id="txtAddressReceiving">
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn btn-green-ct mt-4" type="button" id="btnBuy">
+                                        Buy Now
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-12 col-lg-4 col-xl-4 offset-xl-2 offset-lg-2">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <div class="card-title" style="color: #4e4d4b;
+                                                        font-weight: 600 !important;
+                                                        text-shadow: -3px 3px 8px #565653;
+                                                        width:100%">ELC Price:<span style="color: #ff5722;"> $0.09</span></div>
+                    </div>
+                    <div class="card-body" style="padding: 1.5rem 1.5rem;">
+                        <form>
+                            @Html.AntiForgeryToken()
+                            <div class="box-platform">
+                                <div class="form-group">
+                                    <label class="form-control-label">Wallet USDT TRC20 Balance</label>
+                                    <input type="text" readonly class="form-control numberFormat" id="usdtTRC20Balance" value="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label"> USDT TRC20 Amount</label>
+                                    <input type="text" class="form-control numberFormat txtUSDTTRC20Amount" value="0" id="txtUSDTTRC20Amount">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">ELC Receiving Amount</label>
+                                    <input type="text" readonly class="form-control numberFormat" value="0" id="txtUSDTTRC20DOLPReceiving">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Address Receiving</label>
+                                    <input type="text" class="form-control" id="txtUSDTTRC20AddressReceiving">
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn btn-green-ct mt-4" type="button" id="btnUSDTTRC20Buy">
+                                        Buy Now
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

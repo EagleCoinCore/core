@@ -1,0 +1,177 @@
+﻿@*@model BeCoreApp.Models.BlogViewModels.CatalogViewModel
+<link href="~/client-side/fbsbatdongsan/css/blog/menu-item/index.css" rel="stylesheet" type='text/css' media='all' />
+@Html.Partial("_AdvancedFBS")
+
+<div id="section-body" class="sticky_show_scroll_active">
+    <div class="container">
+        <!--start compare panel-->
+        <div id="compare-controller" class="compare-panel">
+            <div class="compare-panel-header">
+                <h4 class="title"> Compare Listings <span class="panel-btn-close pull-right"><i class="fa fa-times"></i></span></h4>
+            </div>
+            <div id="compare-properties-basket"></div>
+        </div>
+        <!--end compare panel-->
+        <div class="page-title breadcrumb-top">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb">
+                        <li itemscope itemtype="">
+                            <a itemprop="url" href="/">
+                                <span itemprop="title">Trang Chủ</span>
+                            </a>
+                        </li>
+
+                        <li itemscope itemtype="">
+                            <a itemprop="url" href="/">
+                                <span itemprop="title">@Model.MenuGroupVM.Name</span>
+                            </a>
+                        </li>
+                        <li class="active">@Model.MenuItemVM.Name</li>
+                    </ol>
+                    <div class="page-title-left">
+                        <h1 class="title-head">@Model.MenuItemVM.Name</h1>
+                    </div>
+                    <div class="page-title-right">
+                        <div class="view">
+                            <div class="table-cell hidden-xs">
+                                <span class="view-btn btn-list active"><i class="fa fa-th-list"></i></span>
+                                <span class="view-btn btn-grid "><i class="fa fa-th-large"></i></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 list-grid-area container-contentbar">
+                <div id="content-area">
+                    @if (Model.BlogCategoryVMs.Count > 0)
+                    {
+                        @foreach (var blogCategory in Model.BlogCategoryVMs)
+                        {
+                            var blogCategoryUrl = $"/{blogCategory.SeoAlias}-bc.{blogCategory.Id}.html";
+                            <!--start list tabs-->
+                            <div class="list-tabs table-list full-width">
+                                <div class="tabs table-cell">
+                                    <ul>
+                                        <li><a href="@blogCategoryUrl" class=active>@blogCategory.Name</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--end list tabs-->
+                            <!--start property items-->
+                            <div class="property-listing list-view">
+                                <div class="row">
+                                    @foreach (var blog in Model.BlogVMs.Where(x => x.BlogCategoryId == blogCategory.Id))
+                                    {
+                                        var blogDetailUrl = $"/{blog.SeoAlias}-b.{blog.Id}.html";
+                                        <div id="ID-@blog.Id" class="item-wrap infobox_trigger featured_prop item-luxury-family-home">
+                                            <div class="property-item table-list">
+                                                <div class="table-cell">
+                                                    <div class="figure-block">
+                                                        <figure class="item-thumb">
+                                                            <a class="hover-effect" href="@blogDetailUrl">
+                                                                <img width="385" height="258" src="@blog.Image" class="attachment-houzez-property-thumb-image size-houzez-property-thumb-image wp-post-image" alt="" srcset="@blog.Image" sizes="(max-width: 385px) 100vw, 385px" />
+                                                            </a>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <div class="item-body table-cell">
+                                                    <div class="body-left table-cell">
+                                                        <div class="info-row">
+                                                            <h2 class="property-title">
+                                                                <a href="@blogDetailUrl">@blog.Name</a>
+                                                            </h2>
+                                                            <address class="property-address">@blog.DateModified.ToString("hh:mm dd-MM-yyyy")</address>
+                                                        </div>
+                                                        <div class="info-row amenities hide-on-grid">
+                                                            <p>@blog.Description</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-list full-width hide-on-list">
+                                                        <div class="cell">
+                                                            <div class="info-row amenities">
+                                                                <p>@blog.Description</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <!--end property items-->
+                        }
+                    }
+                    else
+                    {
+                        var mẹnuItemUrl = $"/{Model.MenuItemVM.SeoAlias}-mi.{Model.MenuItemVM.Id}.html";
+                        <!--start list tabs-->
+                        <div class="list-tabs table-list full-width">
+                            <div class="tabs table-cell">
+                                <ul>
+                                    <li><a href="@mẹnuItemUrl" class=active>@Model.MenuItemVM.Name</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end list tabs-->
+                        <!--start property items-->
+                        <div class="property-listing list-view">
+                            <div class="row">
+                                @foreach (var blog in Model.Data.Results)
+                                {
+                                    var blogDetailUrl = $"/{blog.SeoAlias}-b.{blog.Id}.html";
+                                    <div id="ID-@blog.Id" class="item-wrap infobox_trigger featured_prop item-luxury-family-home">
+                                        <div class="property-item table-list">
+                                            <div class="table-cell">
+                                                <div class="figure-block">
+                                                    <figure class="item-thumb">
+                                                        <a class="hover-effect" href="@blogDetailUrl">
+                                                            <img width="385" height="258" src="@blog.Image" class="attachment-houzez-property-thumb-image size-houzez-property-thumb-image wp-post-image" alt="" srcset="@blog.Image" sizes="(max-width: 385px) 100vw, 385px" />
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="item-body table-cell">
+                                                <div class="body-left table-cell">
+                                                    <div class="info-row">
+                                                        <h2 class="property-title">
+                                                            <a href="@blogDetailUrl">@blog.Name</a>
+                                                        </h2>
+                                                        <address class="property-address">@blog.DateModified.ToString("hh:mm dd-MM-yyyy")</address>
+                                                    </div>
+                                                    <div class="info-row amenities hide-on-grid">
+                                                        <p>@blog.Description</p>
+                                                    </div>
+                                                </div>
+                                                <div class="table-list full-width hide-on-list">
+                                                    <div class="cell">
+                                                        <div class="info-row amenities">
+                                                            <p>@blog.Description</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!--end property items-->
+
+                        <hr>
+                        @await Component.InvokeAsync("Pager", Model.Data)
+                    }
+
+                </div>
+            </div>
+            <!-- end container-content -->
+            @await Component.InvokeAsync("Sidebar")
+        </div>
+    </div>
+    <!--.container Start in header-->
+</div>*@
